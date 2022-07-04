@@ -5,33 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sichoi <sichoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/03 22:51:17 by sichoi            #+#    #+#             */
-/*   Updated: 2022/07/04 16:16:17 by sichoi           ###   ########.fr       */
+/*   Created: 2022/07/04 16:39:10 by sichoi            #+#    #+#             */
+/*   Updated: 2022/07/04 17:15:17 by sichoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Replace.hpp"
-
-void	exitFatal(const std::string& s)
-{
-	std::cerr << s << std::endl;
-	std::exit(1);
-}
+#include "Harl.hpp"
 
 int	main(int argc, char **argv)
 {
-	if (argc != 4)
-		exitFatal("Wrong Arguments!!");
-	std::ifstream	fin(argv[1], std::ios_base::in);
-	std::ofstream	fout(static_cast<std::string>(argv[1]) + ".replace");
+	if (argc != 2)
+	{
+		std::cout << "Wrong Arguments!!" << std::endl;
+		return (1);
+	}
+	Harl h;
+	std::string	filter = static_cast<std::string>(argv[1]);
 
-	if (!fin.good() || !fout.good())
-		exitFatal("Corrupted File!!");
-	std::string s = Replace::preprocess(fin);
-	Replace::stringReplace(&s, argv[2], argv[3]);
-	fout << s;
-	fin.close();
-	fout.close();
+	h.complain("WARNING", filter);
+	h.complain("ERROR", filter);
+	h.complain("INFO", filter);
+	h.complain("DEBUG", filter);
 	return (0);
 }

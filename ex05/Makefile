@@ -6,11 +6,11 @@
 #    By: sichoi <sichoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 18:35:07 by sichoi            #+#    #+#              #
-#    Updated: 2022/07/04 17:17:51 by sichoi           ###   ########.fr        #
+#    Updated: 2022/07/04 16:38:52 by sichoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = copy
+NAME = harl
 
 CC = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -21,9 +21,8 @@ RESET = \033[0m
 CHECK = \033[0;32m\xE2\x9C\x94\033[0m
 
 FUNC = main\
-		Replace\
+		Harl\
 
-DOT_REPLACE = *.replace
 
 SRC = $(addsuffix .cpp, $(FUNC))
 OBJ = $(addsuffix .o, $(FUNC))
@@ -43,8 +42,7 @@ clean :
 	@echo "$(NAME): $(RED) object files were deleted $(RESET)"
 
 fclean : clean
-	@rm -f $(NAME) $(DOT_REPLACE)
+	@rm -f $(NAME)
 	@echo "$(NAME): $(RED) $(NAME) was deleted $(RESET)"
-	@echo "$(NAME): $(RED) $(DOT_REPLACE) was deleted $(RESET)"
 
 re : fclean all
